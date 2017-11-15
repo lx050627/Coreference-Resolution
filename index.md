@@ -11,15 +11,9 @@ Afterwards, in order to choose at most one antecedent for each mention or determ
 As is depicted in Figure 1, the mention-ranking architecture serves as the backbone of this coreference system.
 ![figure1](figure1.png)<center>Figure 1 The basic structure of coreference model</center >
 
-We extracted *n* mentions from a document *x*. The i th mention has an association random variable 
-<math>
-    <msubsup><mi>a</mi> <mi>i</mi> <mi></mi></msubsup>
-</math>
-taking values from {1,...,i-1,NEW}.This variable has i possible antecedence choices:link to one of the i-1 preceding mentions or just begin a new cluster. The sequence of 
-<math>
-    <msubsup><mi>a</mi> <mi>i</mi> <mi></mi></msubsup>
-</math>
-can be regarded as a unique set of coreference chains, serving as the output of this system.
+We extracted *n* mentions from a document *x*. The i th mention has an association random variable <math> <msubsup><mi>a</mi> <mi>i</mi> <mi></mi></msubsup>
+</math>taking values from {1,...,i-1,NEW}.This variable has i possible antecedence choices:link to one of the i-1 preceding mentions or just begin a new cluster. The sequence of <math><msubsup><mi>a</mi> <mi>i</mi> <mi></mi></msubsup>
+</math>can be regarded as a unique set of coreference chains, serving as the output of this system.
   
   
   
