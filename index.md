@@ -1,10 +1,10 @@
 # The Summary of *"Easy Victories  and Uphill Battles in Coreference Resolution"*
-####EMNLP 2013####
+#### EMNLP 2013
 
 The papers presents a learning-based, mention-synchronous coreference system which utilizes the simplest features to address various aspects regarding coreference resolution. Although only surface-level document characteristics and superficial syntactic infomation are used, surprisingly, the system is able to achieve high performance, which is referred to as *Easy Victories* in the paper title. However, on the other hand, the behaviors of the system in capturing semantic information is not satisfactory because of the complex structural property.Therefore, semantic inforamtion extraction is considered as *Uphill Battles*.
 
-## Mention-Synchronous Framework 
-###Coreference Model###
+## Mention-Synchronous Framework
+### Coreference Model
 The mention-synchronous framework indicates that we use features to decide whether single mentions are anaphorics and pairs of mentions or not. So, the initial job is to indentify the set of mentions from text annotated with parses as well as named entity tags.
 
 Afterwards, in order to choose at most one antecedent for each mention or determine it is the beginning of a new cluster, a log-linear model is adopted. 
@@ -18,15 +18,15 @@ The system adopts a log-linear model of the condtional distribution P(a|x) as fo
 ![formula1](formula1.png)
 where **f**(i,a<sub>i</sub>,x) is a feature function that examines the coreference decision a<sub>i</sub> for mention *i* with document context *x*.
 
-###Inference with Model###
+### Inference with Model
 The inference process is efficient. We can obtain the result by maximizing logP(a|x), which decomposes linearly over each mention.
   
-###Learning of Model###
+### Learning of Model
 We optimize the conditional log-likelihood augmented with a parameterized loss function.C<sup>\*</sup> represents a gold clustering defined over gold mentions.Given *t* training examples of the form (x<sub>k</sub>,&nbsp;C<sup>\*</sup><sub>k</sub>),the likelihood function can be written as follows:
 ![formula2](formula2.png)
 where <img src="formula3.png" width = "200" height = "30" align=center /> withl(a,C<sup>\*</sup>) being a loss function. This final parameterized loss function is a weighted sum of the counts of three error types（false anaphor error, false new error, wrong link eror).
 
-##Easy Victories from Surface Features###
+## Easy Victories from Surface Features
 The surface feature set only includes the following properties of mentions and mention pairs: 
  
 * Mention type（nominal, proper, or pronominal)
@@ -42,6 +42,6 @@ Even though these features seem rather superficial and simple, they are adequate
 
 To provide more insights into data-driven features and heuristic-driven features, the paper exhibits the results of ablation experiments.It is found that none of heuristic-driven features make substantial contribution on top of the data-driven features. To sum up, these simple features can help us gain victories on syntax-related subtask.
 
-##Uphill Battles on Semantics
+## Uphill Battles on Semantics
    The features which are effective in capturing syntactic phenomena can not handle semantic phenomena well. Even a combination of serveral shallow semantic features cannot succeed in modelling semantics.
 
