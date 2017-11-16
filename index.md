@@ -24,7 +24,7 @@ The inference process is efficient. We can obtain the result by maximizing logP(
 ###Learning of Model###
 We optimize the conditional log-likelihood augmented with a parameterized loss function.C<sup>\*</sup> represents a gold clustering defined over gold mentions.Given *t* training examples of the form (x<sub>k</sub>,&nbsp;C<sup>\*</sup><sub>k</sub>),the likelihood function can be written as follows:
 ![formula2](formula2.png)
-where <img src="formula3.png" width = "200" height = "30" align=center /> with  l(a,C<sup>\*</sup>) being a loss function. This final parameterized loss function is a weighted sum of the counts of three error types（false anaphor error, false new error, wrong link eror).
+where <img src="formula3.png" width = "200" height = "30" align=center /> withl(a,C<sup>\*</sup>) being a loss function. This final parameterized loss function is a weighted sum of the counts of three error types（false anaphor error, false new error, wrong link eror).
 
 ##Easy Victories from Surface Features###
 The surface feature set only includes the following properties of mentions and mention pairs: 
