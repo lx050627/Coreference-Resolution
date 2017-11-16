@@ -15,7 +15,8 @@ As is depicted in Figure 1, the mention-ranking architecture serves as the backb
 We extracted *n* mentions from a document *x*. The i th mention has an association random variable a<sub>i</sub> taking values from {1,...,i-1,NEW}.This variable has i possible antecedence choices:link to one of the i-1 preceding mentions or just begin a new cluster. The sequence of a<sub>i</sub> can be regarded as a unique set of coreference chains, serving as the output of this system.
 
 The system adopts a log-linear model of the condtional distribution P(a|x) as follows:
-![formula1](formula1.png)
+![formula1](formula1.png)  
+
 where **f**(i,a<sub>i</sub>,x) is a feature function that examines the coreference decision a<sub>i</sub> for mention *i* with document context *x*.
 
 ### Inference with Model
