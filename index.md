@@ -22,8 +22,8 @@ where **f**(i,a<sub>i</sub>,x) is a feature function that examines the coreferen
 The inference process is efficient. We can obtain the result by maximizing logP(a|x), which decomposes linearly over each mention.
   
 ### Learning of Model
-We optimize the conditional log-likelihood augmented with a parameterized loss function.C<sup>\*</sup> represents a gold clustering defined over gold mentions.Given *t* training examples of the form (x<sub>k</sub>,&nbsp;C<sup>\*</sup><sub>k</sub>),the likelihood function can be written as follows: <center><img src="formula2.png" width = "300" height = "110" /></center>
-where<img src="formula3.png" width = "200" height = "30" align=center /> 
+We optimize the conditional log-likelihood augmented with a parameterized loss function.C<sup>\*</sup> represents a gold clustering defined over gold mentions.Given *t* training examples of the form (x<sub>k</sub>,&nbsp;C<sup>\*</sup><sub>k</sub>),the likelihood function can be written as follows:<center><img src="formula2.png" width = "300" height = "110" /></center>
+where <img src="formula3.png" width = "200" height = "30"/> 
 with l(a,C<sup>\*</sup>) being a loss function. This final parameterized loss function is a weighted sum of the counts of three error types(false anaphor error, false new error, wrong link eror).
 
 ## Easy Victories from Surface Features
