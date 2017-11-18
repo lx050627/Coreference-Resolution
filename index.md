@@ -15,7 +15,7 @@ As is depicted in Figure 1, the mention-ranking architecture serves as the backb
 We extracted *n* mentions from a document *x*. The i th mention has an association random variable a<sub>i</sub> taking values from {1,...,i-1,NEW}.This variable has i possible antecedence choices:link to one of the i-1 preceding mentions or just begin a new cluster. The sequence of a<sub>i</sub> can be regarded as a unique set of coreference chains, serving as the output of this system.
 
 The system adopts a log-linear model of the condtional distribution P(a|x) as follows:
-![formula1](formula1.png)
+<center><img src="formula1.png" width = "300" height = "110" /></center> 
 where **f**(i,a<sub>i</sub>,x) is a feature function that examines the coreference decision a<sub>i</sub> for mention *i* with document context *x*.
 
 ###Inference with Model###
@@ -23,11 +23,11 @@ The inference process is efficient. We can obtain the result by maximizing logP(
   
 ###Learning of Model###
 We optimize the conditional log-likelihood augmented with a parameterized loss function.C<sup>\*</sup> represents a gold clustering defined over gold mentions.Given *t* training examples of the form (x<sub>k</sub>,&nbsp;C<sup>\*</sup><sub>k</sub>),the likelihood function can be written as follows:
-![formula2](formula2.png)
+<center><img src="formula2.png" width = "300" height = "110" /></center> 
 where <img src="formula3.png" width = "200" height = "30" align=center /> withl(a,C<sup>\*</sup>) being a loss function. This final parameterized loss function is a weighted sum of the counts of three error types（false anaphor error, false new error, wrong link eror).
 
 ##Easy Victories from Surface Features###
-The surface feature set only includes the following properties of mentions and mention pairs: 
+The surface feature set only includes the following properties of current mentions, corresponding antecedents and mention pairs: 
  
 * Mention type（nominal, proper, or pronominal)
 * The complete string of a mention
@@ -37,11 +37,25 @@ The surface feature set only includes the following properties of mentions and m
 * Mention length
 * Two distance measures between mentions
 
-In addition, the features consist of two conjunctions of each feature.
-Even though these features seem rather superficial and simple, they are adequate enough to yield a satisfying coreference result. The underlying reason is that they can capture implicitly the linguistic phenomena without the assitance of heuristic-driven features. Notably, these kinds of data-driven features are also able to model more patterns in the data by achieving finer level of granularity.  
+In addition, the features consist of two conjunctions of each feature.Even though these features seem rather superficial and simple, they are adequate enough to yield a satisfying coreference result. The underlying reason is that they can capture implicitly the linguistic phenomena without the assitance of heuristic-driven features. Notably, these kinds of data-driven features are also able to model more patterns in the data by achieving finer level of granularity.  
 
 To provide more insights into data-driven features and heuristic-driven features, the paper exhibits the results of ablation experiments.It is found that none of heuristic-driven features make substantial contribution on top of the data-driven features. To sum up, these simple features can help us gain victories on syntax-related subtask.
 
 ##Uphill Battles on Semantics
-   The features which are effective in capturing syntactic phenomena can not handle semantic phenomena well. Even a combination of serveral shallow semantic features cannot succeed in modelling semantics.
+The features which are effective in capturing syntactic phenomena can not handle semantic phenomena well. Even a combination of serveral shallow semantic features cannot succeed in modelling the information related to semantics.
+
+The reason behind this situation is that the percentage of positive coreference links present in the training data is small.Determining the correct links is much more difficult as a result of the large quantities of possible antecedents.
+Therefore, the coreference system needs very strong evidence for the purpose of making mentions coreferent. What's more, a weak indicator can not be trusted, for it will have a high "false positive" rate. 
+
+So it is concluded that capturing semantics in a data-driven,shallow manner remains an uphill battle.
+
+##FINAL System and Results
+   The FINAL system incorporates additional features which the SURFACE system does not include. Specifically, two conjoined vairants of each feature are included:first with the type of the current mention, then with the types of both mentions in the pair. Thanks to these conjunctions, antecedent features regarding gender and number can influence pronoun resolution.
+   
+   Full results of SURFACE and FINAL feature sets are shown in Table 1, which demonstrates that the system introduced in this paper has a better performance than these sophisticated systems, in spite of merely using simple features.
+   ![table1](table1.png)
+    Table 1 CoNLL metric scores for our system on the CoNLL development and blind test sets, compared with the results of Lee et al. (2011)(STANFORD) and Björkelund and Farkas (2012)(IMS).
+##Conclusion
+In this paper, a coreference system using a simple and homogeneous set of features is presented. Notwithstanding not explicitly targeting at specific infomration apropos mentions like heuristic-driven methods do, data-driven features can implicitly model sufficient linguistic phenonema used for coreference resolution. Nevertheless,complex outside information and deep heuristics are indispensable to ameliorate coreferene performance in the system mention setting, offering adequately strong indicators of coreference relationship.
+   
 
