@@ -27,7 +27,7 @@ where <img src="formula3.png" width = "200" height = "30" align=center /> withl(
 ## Easy Victories from Surface Features
 The surface feature set only includes the following properties of current mentions, corresponding antecedents and mention pairs: 
  
-* Mention type（nominal, proper, or pronominal)
+* Mention type (nominal, proper, or pronominal)
 * The complete string of a mention
 * The semantic head of a mention
 * The first word and last word of each mention
@@ -35,26 +35,39 @@ The surface feature set only includes the following properties of current mentio
 * Mention length
 * Two distance measures between mentions
 
-In addition, the features consist of two conjunctions of each feature.Even though these features seem rather superficial and simple, they are adequate enough to yield a satisfying coreference result. The underlying reason is that they can capture implicitly the linguistic phenomena without the assitance of heuristic-driven features. Notably, these kinds of data-driven features are also able to model more patterns in the data by achieving finer level of granularity.  
+In addition, the features consist of two conjunctions of each feature.Even though these features seem rather superficial and simple, they are adequate enough to yield a satisfying coreference result. The underlying reason is that they can capture implicitly the linguistic phenomena without the assitance of heuristic-driven features.  
+ 
+For instance, Table 1 shows the corresponding relationship between heuristic-driven features and SURFACE features which are utilized in this system.
+
+| Targets of heuristic-driven features | SURFACE features  |  
+|:-------------: |:---------------:| 
+| person, number, gender or animacy of mentions| conjunctions with pronoun identity  |         
+| definiteness     | indicator on the first word of a mention        |           
+| centering theory | word context        |  
+<center>Table 1 Heuristic-driven features VS  SURFACE features</center>
+
+
+Notably, these kinds of data-driven features are also able to model more patterns in the data by achieving finer level of granularity.  
 
 To provide more insights into data-driven features and heuristic-driven features, the paper exhibits the results of ablation experiments.It is found that none of heuristic-driven features make substantial contribution on top of the data-driven features. To sum up, these simple features can help us gain victories on syntax-related subtask.
 
 ## Uphill Battles on Semantics
-The features which are effective in capturing syntactic phenomena can not handle semantic phenomena well. Even a combination of serveral shallow semantic features cannot succeed in modelling the information related to semantics.
+The features which are effective in capturing syntactic phenomena can not handle semantic phenomena well. So the system designers resort to external resources, such as WordNet hypernymy and synonymy, named entity types and so on.However, even the incorporation of these shallow semantic features cannot help the system succeed in modelling the semantic information.
 
 The reason behind this situation is that the percentage of positive coreference links present in the training data is small.Determining the correct links is much more difficult as a result of the large quantities of possible antecedents.
 Therefore, the coreference system needs very strong evidence for the purpose of making mentions coreferent. What's more, a weak indicator can not be trusted, for it will have a high "false positive" rate. 
 
-So it is concluded that capturing semantics in a data-driven,shallow manner remains an uphill battle.
-
+Thus,it is concluded that capturing semantics in a data-driven,shallow manner remains an uphill battle.
 ## FINAL System and Results
-   The FINAL system incorporates additional features which the SURFACE system does not include. Specifically, two conjoined vairants of each feature are included:first with the type of the current mention, then with the types of both mentions in the pair. Thanks to these conjunctions, antecedent features regarding gender and number can influence pronoun resolution.
+The FINAL system incorporates additional features which the SURFACE system does not include. Specifically, two conjoined vairants of each feature are included:first with the type of the current mention, then with the types of both mentions in the pair. Thanks to these conjunctions, antecedent features regarding gender and number can influence pronoun resolution.
    
-   Full results of SURFACE and FINAL feature sets are shown in Table 1, which demonstrates that the system introduced in this paper has a better performance than these sophisticated systems, in spite of merely using simple features.
-   ![table1](table1.png)
-    Table 1 CoNLL metric scores for our system on the CoNLL development and blind test sets, compared with the results of Lee et al. (2011)(STANFORD) and Björkelund and Farkas (2012)(IMS).
+Full results of SURFACE and FINAL feature sets are shown in Table 1, which demonstrates that the system introduced in this paper has a better performance than these sophisticated systems, in spite of merely using simple features.
+   
+   ![table2](table2.png)
+<center>Table 2 CoNLL metric scores for our system on the CoNLL development and blind test sets, compared with the results of Lee et al. (2011)(STANFORD) and Björkelund and Farkas (2012)(IMS).</center>
     
 ## Conclusion
-In this paper, a coreference system using a simple and homogeneous set of features is presented. Notwithstanding not explicitly targeting at specific infomration apropos mentions like heuristic-driven methods do, data-driven features can implicitly model sufficient linguistic phenonema used for coreference resolution. Nevertheless,complex outside information and deep heuristics are indispensable to ameliorate coreferene performance in the system mention setting, offering adequately strong indicators of coreference relationship.
+In this paper, a coreference system using a simple and homogeneous set of features is presensted. Notwithstanding not explicitly targeting at specific infomration apropos mentions like heuristic-driven methods do, data-driven features can implicitly model sufficient linguistic phenonema used for coreference resolution. Nevertheless,complex outside information and deep heuristics are indispensable to ameliorate coreferene performance in the system mention setting, offering adequately strong indicators of coreference relationship.
    
-
+To see the publicly available Berkeley Coreference Resolution System, please visit 
+[here](http://nlp.cs.berkeley.edu/projects/coref.shtml).
