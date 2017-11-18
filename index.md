@@ -41,14 +41,15 @@ In addition, the features consist of two conjunctions of each feature.Even thoug
  
 For instance, Table 1 shows the corresponding relationship between heuristic-driven features and SURFACE features which are utilized in this system.
 
-| Targets of heuristic-driven features | SURFACE features  |  
+
+|Targets of heuristic-driven features|SURFACE features|  
 |:-------------: |:---------------:| 
-| person, number, gender or animacy of mentions| conjunctions with pronoun identity  |         
-| definiteness     | indicator on the first word of a mention        |           
-| centering theory | word context        |  
+| person, number, gender or animacy of mentions| conjunctions with pronoun identity|         
+| definiteness| indicator on the first word of a mention|           
+| centering theory | word context|  
+
+
 <center>Table 1 Heuristic-driven features VS  SURFACE features</center>
-
-
 Notably, these kinds of data-driven features are also able to model more patterns in the data by achieving finer level of granularity.  
 
 To provide more insights into data-driven features and heuristic-driven features, the paper exhibits the results of ablation experiments.It is found that none of heuristic-driven features make substantial contribution on top of the data-driven features. To sum up, these simple features can help us gain victories on syntax-related subtask.
