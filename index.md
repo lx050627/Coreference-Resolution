@@ -1,7 +1,8 @@
 # The Summary of *"Easy Victories  and Uphill Battles in Coreference Resolution"*
-#### EMNLP 2013
+##### EMNLP 2013
+##### Authors: Greg Durrett and Dan Klein, Computer Science Division,University of California,Berkeley
 
-The papers presents a learning-based, mention-synchronous coreference system which utilizes the simplest features to address various aspects regarding coreference resolution. Although only surface-level document characteristics and superficial syntactic infomation are used, surprisingly, the system is able to achieve high performance, which is referred to as *Easy Victories* in the paper title. However, on the other hand, the behaviors of the system in capturing semantic information is not satisfactory because of the complex structural property.Therefore, semantic inforamtion extraction is considered as *Uphill Battles*.
+The paper presents a learning-based, mention-synchronous coreference system which utilizes the simplest features to address various aspects regarding coreference resolution. Although only surface-level document characteristics and superficial syntactic infomation are used, surprisingly, the system is able to achieve high performance, which is referred to as *Easy Victories* in the paper title. However, on the other hand, the behaviors of the system in capturing semantic information is not satisfactory because of the complex structural property.Therefore, semantic inforamtion extraction is considered as *Uphill Battles*.
 
 ## Mention-Synchronous Framework 
 ### Coreference Model
