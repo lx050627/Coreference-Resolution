@@ -2,11 +2,11 @@
 ##### EMNLP 2013
 ##### Authors: Greg Durrett and Dan Klein, Computer Science Division,University of California,Berkeley
 
-The paper presents a learning-based, mention-synchronous coreference system which utilizes the simplest features to address various aspects regarding coreference resolution. Although only surface-level document characteristics and superficial syntactic infomation are used, surprisingly, the system is able to achieve high performance, which is referred to as *Easy Victories* in the paper title. However, on the other hand, the behaviors of the system in capturing semantic information is not satisfactory because of the complex structural property.Therefore, semantic inforamtion extraction is considered as *Uphill Battles*.
+The paper presents a learning-based, mention-synchronous coreference system which utilizes the simplest features to address various aspects regarding coreference resolution. Although only surface-level document characteristics and superficial syntactic infomation are used, surprisingly, the system is able to achieve high performance, which is referred to as *Easy Victories* in the paper title. However, on the other hand, the behaviors of the system in capturing semantic information is not satisfactory because of the complex structural property.Therefore, semantic information extraction is considered as *Uphill Battles*.
 
 ## Mention-Synchronous Framework 
 ### Coreference Model
-The mention-synchronous framework indicates that we use features to decide whether single mentions are anaphorics and pairs of mentions or not. So, the initial job is to indentify the set of mentions from text annotated with parses as well as named entity tags.
+The mention-synchronous framework indicates that we use features to decide whether single mentions are anaphorics and pairs of mentions or not. So, the initial job is to identify the set of mentions from text annotated with parses as well as named entity tags.
 
 Afterwards, in order to choose at most one antecedent for each mention or determine it is the beginning of a new cluster, a log-linear model is adopted. 
 
@@ -22,7 +22,7 @@ where **f**(i,a<sub>i</sub>,x) is a feature function that examines the coreferen
 The inference process is efficient. We can obtain the result by maximizing logP(a|x), which decomposes linearly over each mention.
   
 ### Learning of Model
-We optimize the conditional log-likelihood augmented with a parameterized loss function.C<sup>\*</sup> represents a gold clustering defined over gold mentions.Given *t* training examples of the form (x<sub>k</sub>,&nbsp;C<sup>\*</sup><sub>k</sub>),the likelihood function can be written as follows:<center><img src="formula2.png" width = "300" height = "110" /></center>
+We optimize the conditional log-likelihood augmented with a parameterized loss function.C<sup>\*</sup> represents a gold clustering defined over gold mentions.Given *t*  training examples of the form (x<sub>k</sub>,&nbsp;C<sup>\*</sup><sub>k</sub>),the likelihood function can be written as follows:<center><img src="formula2.png" width = "300" height = "110" /></center>
 where <img src="formula3.png" width = "200" height = "30"/> 
 with l(a,C<sup>\*</sup>) being a loss function. This final parameterized loss function is a weighted sum of the counts of three error types(false anaphor error, false new error, wrong link eror).
 
@@ -37,10 +37,9 @@ The surface feature set only includes the following properties of current mentio
 * Mention length
 * Two distance measures between mentions
 
-In addition, the features consist of two conjunctions of each feature.Even though these features seem rather superficial and simple, they are adequate enough to yield a satisfying coreference result. The underlying reason is that they can capture implicitly the linguistic phenomena without the assitance of heuristic-driven features.  
+In addition, the features consist of two conjunctions of each feature.Even though these features seem rather superficial and simple, they are adequate to yield a satisfying coreference result. The underlying reason is that they can capture implicitly the linguistic phenomena without the assitance of heuristic-driven features.  
  
 For instance, Table 1 shows the corresponding relationship between heuristic-driven features and SURFACE features which are utilized in this system.
-
 
 |Targets of heuristic-driven features|SURFACE features|  
 |:-------------:|:---------------:| 
@@ -48,11 +47,10 @@ For instance, Table 1 shows the corresponding relationship between heuristic-dri
 |definiteness|indicator on the first word of a mention|           
 |centering theory|word context|  
 
-
 <center>Table 1 Heuristic-driven features VS  SURFACE features</center>
 Notably, these kinds of data-driven features are also able to model more patterns in the data by achieving finer level of granularity.  
 
-To provide more insights into data-driven features and heuristic-driven features, the paper exhibits the results of ablation experiments.It is found that none of heuristic-driven features make substantial contribution on top of the data-driven features. To sum up, these simple features can help us gain victories on syntax-related subtask.
+To provide more insights into data-driven features and heuristic-driven features, the paper exhibits the results of ablation experiments.It is found that none of heuristic-driven features make substantial contribution on top of the data-driven features. To sum up, these simple features can help us gain victories on syntax-related subtasks.
 
 ## Uphill Battles on Semantics
 The features which are effective in capturing syntactic phenomena can not handle semantic phenomena well. So the system designers resort to external resources, such as WordNet hypernymy and synonymy, named entity types and so on.However, even the incorporation of these shallow semantic features cannot help the system succeed in modelling the semantic information.
@@ -62,16 +60,16 @@ Therefore, the coreference system needs very strong evidence for the purpose of 
 
 Thus,it is concluded that capturing semantics in a data-driven,shallow manner remains an uphill battle.
 ## FINAL System and Results
-The FINAL system incorporates additional features which the SURFACE system does not include. Specifically, two conjoined vairants of each feature are included:first with the type of the current mention, then with the types of both mentions in the pair. Thanks to these conjunctions, antecedent features regarding gender and number can influence pronoun resolution.
+The FINAL system consists of additional features which the SURFACE system does not include. Specifically, two conjoined vairants of each feature are included:first with the type of the current mention, then with the types of both mentions in the pair. Thanks to these conjunctions, antecedent features regarding gender and number can contribute to pronoun resolution.
    
-Full results of SURFACE and FINAL feature sets are shown in Table 1, which demonstrates that the system introduced in this paper has a better performance than these sophisticated systems, in spite of merely using simple features.
+Full results of SURFACE and FINAL feature sets are shown in Table 1, which demonstrates that the system introduced in this paper has a better performance than those sophisticated systems, in spite of merely using simple features.
    
    ![table2](table2.png)
-<center>Table 2 CoNLL metric scores for our system on the CoNLL development and blind test sets, compared with the results of Lee et al. (2011)(STANFORD) and Björkelund and Farkas (2012)(IMS).</center>  
+<center>Table 2 CoNLL metric scores for Berkeley Coreference Resolution System on the CoNLL development and blind test sets, compared with the results of Lee et al. (2011)(STANFORD) and Björkelund and Farkas (2012)(IMS).</center>  
   
   
 ## Conclusion
-In this paper, a coreference system using a simple and homogeneous set of features is presensted. Notwithstanding not explicitly targeting at specific infomration apropos mentions like heuristic-driven methods do, data-driven features can implicitly model sufficient linguistic phenonema used for coreference resolution. Nevertheless,complex outside information and deep heuristics are indispensable to ameliorate coreferene performance in the system mention setting, offering adequately strong indicators of coreference relationship.
+In this paper, a coreference system using a simple and homogeneous set of features is introduced. Notwithstanding not explicitly targeting at specific information apropos mentions like heuristic-driven methods do, data-driven features can implicitly model sufficient linguistic phenonema used for coreference resolution. Nevertheless,complex outside information and deep heuristics are needed to offer adequately strong indicators of semantic similarity,thus ameliorating coreferene performance in the system mention setting.
    
 To see the publicly available Berkeley Coreference Resolution System, please visit 
 [here](http://nlp.cs.berkeley.edu/projects/coref.shtml).
